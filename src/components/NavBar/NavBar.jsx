@@ -1,20 +1,44 @@
-import { Link } from 'react-router-dom';
-import * as userService from '../../utilities/users-service';
+import { Link } from "react-router-dom";
+import * as userService from "../../utilities/users-service";
 
-export default function NavBar({ user, setUser }) {
-  function handleLogOut() {
-    userService.logOut();
-    setUser(null);
-  }
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
+function NavBar({user, setUser}) {
+
+    function handleLogOut() {
+        userService.logOut();
+        setUser(null);
+    }
 
   return (
-    <nav>
-      <Link to="/orders">Order History</Link>
-      &nbsp; | &nbsp;
-      <Link to="/orders/new">New Order</Link>
-      &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
-    </nav>
+    <Navbar expand="sm" className="bg-body-tertiary">
+      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+          {user && user.name ? (
+            <>
+              <Navbar.Text>
+                Welcome: {user.name}
+              </Navbar.Text>
+              <Link className="nav-link" to="/orders">
+                Order History
+              </Link>
+              <Link className="nav-link" to="/orders/new">
+                New Order
+              </Link>
+              <Link className="nav-link" onClick={handleLogOut}>LogOut</Link>
+            </>
+          ) : (
+            <Link className="nav-link" to="/orders">
+              Sign In
+            </Link>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
+
+export default NavBar;
