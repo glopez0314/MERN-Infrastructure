@@ -26,7 +26,7 @@ const productSchema = new Schema(
       type: Number,
       requied: true,
     },
-    catergory: {
+    category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
     },
