@@ -10,6 +10,7 @@ import HomePage from "../HomePage/HomePage";
 import ShopPage from "../ShopPage/ShopPage";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 import AddInventoryPage from "../AddInventoryPage/AddInventoryPage";
+import CartPage from "../CartPage/CartPage";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function App() {
@@ -17,24 +18,22 @@ export default function App() {
 
   return (
     <main className="App">
-      {user ? (
-        <>
-          <NavBar user={user} setUser={setUser} />
-          <Container>
-            <Row>
-              <Routes>
-                <Route path="/" element={<HomePage user={user} />} />
-                <Route path="/shop" element={<ShopPage user={user} />} />
-                <Route path="/orders" element={<OrderHistoryPage />} />
-                <Route path="/add" element={<AddInventoryPage />} />
-                <Route path="/*" element={<Navigate to="/" />} />
-              </Routes>
-            </Row>
-          </Container>
-        </>
-      ) : (
-        <AuthPage setUser={setUser} />
-      )}
+      <>
+        <NavBar user={user} setUser={setUser} />
+        <Container>
+          <Row>
+            <Routes>
+              <Route path="/" element={<HomePage user={user} />} />
+              <Route path="/shop" element={<ShopPage user={user} />} />
+              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/add" element={<AddInventoryPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/auth" element={<AuthPage setUser={setUser} />} />
+              <Route path="/*" element={<Navigate to="/" />} />
+            </Routes>
+          </Row>
+        </Container>
+      </>
     </main>
   );
 }
