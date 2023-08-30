@@ -1,14 +1,42 @@
-import * as categoryAPI from "../../utilities/categories-api";
+import { useState, useEffect } from "react";
+import * as catAPI from "../../utilities/categories-api";
+import * as subCatAPI from "../../utilities/subCategories-api";
 
 import CategoryForm from "../../components/categoryForm/categoryForm";
+import SubCategoryForm from "../../components/SubCategoryForm/SubCategoryForm";
+import ProductForm from "../../components/ProductForm/ProductForm";
 
 export default function AddInventoryPage() {
+  const [cats, setCats] = useState([]);
+  const [subCats, setSubCats] = useState([]);
+
+  useEffect(function () {
+    async function fetchCats() {
+      try {
+        const res = await catAPI.getCats();
+        setCats(res);
+      } catch (err) {
+        console.log("Error fetching sub-Categories", err);
+      }
+    }
+    fetchCats();
+
+    async function fetchSubCats() {
+      try {
+        const res = await subCatAPI.getSubCats();
+        setSubCats(res);
+      } catch (err) {
+        console.log("Error fetching sub-Categories", err);
+      }
+    }
+    fetchSubCats();
+  }, []);
   return (
     <>
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
+      <ul className="nav nav-tabs" role="tablist">
+        <li className="nav-item" role="presentation">
           <a
-            class="nav-link active"
+            className="nav-link active"
             data-bs-toggle="tab"
             href="#category"
             aria-selected="true"
@@ -17,9 +45,9 @@ export default function AddInventoryPage() {
             Add Category
           </a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li className="nav-item" role="presentation">
           <a
-            class="nav-link"
+            className="nav-link"
             data-bs-toggle="tab"
             href="#subCategory"
             aria-selected="false"
@@ -29,9 +57,9 @@ export default function AddInventoryPage() {
             Add Sub-Category
           </a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li className="nav-item" role="presentation">
           <a
-            class="nav-link"
+            className="nav-link"
             data-bs-toggle="tab"
             href="#product"
             aria-selected="false"
@@ -42,30 +70,19 @@ export default function AddInventoryPage() {
           </a>
         </li>
       </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade show active" id="category" role="tabpanel">
+      <div id="myTabContent" className="tab-content">
+        <div
+          className="tab-pane fade show active"
+          id="category"
+          role="tabpanel"
+        >
           <CategoryForm />
         </div>
-        <div class="tab-pane fade" id="subCategory" role="tabpanel">
-          <p>
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-            single-origin coffee squid. Exercitation +1 labore velit, blog
-            sartorial PBR leggings next level wes anderson artisan four loko
-            farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
-            PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-            mollit.
-          </p>
+        <div className="tab-pane fade" id="subCategory" role="tabpanel">
+          <SubCategoryForm />
         </div>
-        <div class="tab-pane fade" id="product">
-          <p>
-            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold
-            out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table
-            readymade. Messenger bag gentrify pitchfork tattooed craft beer,
-            iphone skateboard locavore carles etsy salvia banksy hoodie
-            helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit
-            cred pitchfork.
-          </p>
+        <div className="tab-pane fade" id="product" role="tabpanel">
+          <ProductForm cats={cats} subCats={subCats} />
         </div>
       </div>
     </>

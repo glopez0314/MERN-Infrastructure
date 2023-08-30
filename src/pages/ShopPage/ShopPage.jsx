@@ -35,8 +35,18 @@ export default function ShopPage({ user }) {
         activeCat={activeCategory}
         setActiveCat={setActiveCategory}
       />
-      <SubCategoriesList subCategories={subCategoryRef.current} />
-      <ProductList />{" "}
+      <SubCategoriesList
+        subCategories={subCategoryRef.current}
+        activeSubCat={activeSubCategory}
+        setActiveSubCat={setActiveSubCategory}
+      />
+      <ProductList
+        products={productItems.filter(
+          (item) =>
+            item.category.name === activeCategory &&
+            item.subCategory.name === activeSubCategory
+        )}
+      />
     </>
   );
 }

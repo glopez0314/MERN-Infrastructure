@@ -1,11 +1,10 @@
 import { Component } from "react";
-import { addCategory } from "../../utilities/categories-api";
+import { addSubCategory } from "../../utilities/subCategories-api";
 import { Button, Form } from "react-bootstrap";
 
-export default class CategoryForm extends Component {
+export default class SubCategoryForm extends Component {
   state = {
     name: "",
-    emoji: "",
     error: "",
   };
 
@@ -19,11 +18,11 @@ export default class CategoryForm extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const { name, emoji } = this.state;
-      const categoryData = { name, emoji };
-      const category = await addCategory(categoryData);
+      const { name } = this.state;
+      const formData = { name };
+      const subCategory = await addSubCategory(formData);
     } catch (err) {
-      this.setState({ error: "Invalid Form - Try Again" });
+      this.setState({ error: "Invalid Form - Try Again", err });
     }
   };
 
@@ -35,19 +34,8 @@ export default class CategoryForm extends Component {
           <Form.Control
             type="text"
             name="name"
-            placeholder="Animal Type"
+            placeholder="Product Type"
             value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Emoji</Form.Label>
-          <Form.Control
-            type="text"
-            name="emoji"
-            placeholder="Use an Emoji"
-            value={this.state.emoji}
             onChange={this.handleChange}
             required
           />

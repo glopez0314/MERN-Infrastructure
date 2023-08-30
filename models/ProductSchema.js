@@ -19,12 +19,11 @@ const productSchema = new Schema(
       required: true,
     },
     weight: {
-      type: Number,
+      type: String,
       required: true,
     },
     price: {
       type: Number,
-      requied: true,
     },
     category: {
       type: Schema.Types.ObjectId,

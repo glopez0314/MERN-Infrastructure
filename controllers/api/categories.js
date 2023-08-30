@@ -1,8 +1,14 @@
 const Category = require("../../models/Category");
 
 module.exports = {
+  index,
   create,
 };
+
+async function index(req, res) {
+  const cats = await Category.find({});
+  res.json(cats);
+}
 
 async function create(req, res) {
   try {
