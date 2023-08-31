@@ -27,7 +27,7 @@ export default function App() {
               <Route path="/shop" element={<ShopPage user={user} />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/add" element={<AddInventoryPage />} />
-              <Route path="/cart" element={<CartPage />} />
+              <Route path="/cart" element={<CartPage user={user} />} />
               <Route path="/auth" element={<AuthPage setUser={setUser} />} />
               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>

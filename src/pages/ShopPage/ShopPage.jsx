@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import * as productsAPI from "../../utilities/products-api";
+import * as ordersAPI from "../../utilities/orders-api";
 
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import SubCategoriesList from "../../components/SubCategoriesList/SubCategoriesList";
@@ -27,7 +28,18 @@ export default function ShopPage({ user }) {
       setActiveSubCategory(subCategoryRef.current[0]);
     }
     getProducts();
+
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
   }, []);
+
+  async function handleAddToCart(itemId) {
+    const updatedCart = await ordersAPI.addItemToCart(itemId);
+    setCart(updatedCart);
+  }
   return (
     <>
       <CategoriesList
@@ -46,6 +58,7 @@ export default function ShopPage({ user }) {
             item.category.name === activeCategory &&
             item.subCategory.name === activeSubCategory
         )}
+        handleAddToCart={handleAddToCart}
       />
     </>
   );
