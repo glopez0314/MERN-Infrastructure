@@ -1,3 +1,4 @@
+import "./OrderDetails.css";
 import LineItem from "../../components/LineItem/LineItem";
 
 export default function OrderDetails({
@@ -17,13 +18,7 @@ export default function OrderDetails({
   return (
     <div className="OrderDetail">
       <div className="section-heading">
-        {cart.isPaid ? (
-          <span>
-            ORDER <span className="smaller">{cart.orderId}</span>
-          </span>
-        ) : (
-          <span>NEW ORDER</span>
-        )}
+        {cart.isPaid ? <span>Furfilled ORDER</span> : <span>NEW ORDER</span>}
         <span>{new Date(cart.updatedAt).toLocaleDateString()}</span>
       </div>
       <div className="line-item-container flex-ctr-ctr flex-col scroll-y">

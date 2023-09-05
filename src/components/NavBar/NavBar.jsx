@@ -28,6 +28,7 @@ function NavBar({ user, setUser }) {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/orders">Orders</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogOut}>LogOut</Dropdown.Item>
+
                     <DropdownButton
                       id="dropdown-admin"
                       drop="end"
@@ -38,15 +39,15 @@ function NavBar({ user, setUser }) {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              <Link className="nav-link cartLink" to="/cart">
+                🛒
+              </Link>
             </>
           ) : (
             <Link className="nav-link userNav" to="/auth">
               Sign In
             </Link>
           )}
-          <Link className="nav-link cartLink" to="/cart">
-            🛒
-          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

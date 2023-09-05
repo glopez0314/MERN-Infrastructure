@@ -8,12 +8,12 @@ export default function CartPage({ user }) {
   const [cart, setCart] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(function () {
+  useEffect(function (user) {
     async function getCart() {
       const cart = await ordersAPI.getCart();
       setCart(cart);
-      console.log(cart);
     }
+
     getCart();
   }, []);
 

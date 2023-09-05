@@ -1,8 +1,4 @@
-.CategoryCard {
-    margin-left: -5vmin;
-}
-
-.CategoryList {
+.SubCategoryList {
     display:flex;
     margin-top: -4.5vmin;
     background-color: var(--bs-gray-500);
@@ -13,7 +9,7 @@
     width: 60vmin;
   }
     
-  .CategoryList li {
+  .SubCategoryList li {
     padding: .6vmin;
     text-align: center;
     margin-top: .2vmin;
@@ -24,13 +20,13 @@
     width: 20vmin;
   }
       
-  .CategoryList li:hover:not(.active) {
+  .SubCategoryList li:hover:not(.active) {
     cursor: pointer;
     background-color: var(--bs-blue);
     color: var(--bs-indigo);
   }
   
-  .CategoryList li.active {
+  .SubCategoryList li.active {
     color: var(--bs-indigo);
     background-color: var(--bs-blue);
     border: .1vmin solid var(--tan-3);

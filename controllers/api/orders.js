@@ -1,4 +1,5 @@
 const Order = require("../../models/Order");
+const user = require("../../models/user");
 
 module.exports = {
   history,
@@ -16,8 +17,12 @@ async function history(req, res) {
 }
 
 async function cart(req, res) {
-  const cart = await Order.getCart(req.user._id);
-  res.json(cart);
+  try {
+    const cart = await Order.getCart(req.user._id);
+    res.json(cart);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function addToCart(req, res) {

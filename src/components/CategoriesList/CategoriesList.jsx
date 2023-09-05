@@ -1,4 +1,5 @@
 import "./CategoryList.css";
+import { Card } from "react-bootstrap";
 
 export default function CategoryList({ categories, activeCat, setActiveCat }) {
   const cats = categories.map((cat) => (
@@ -10,5 +11,14 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
       {cat}
     </li>
   ));
-  return <ul className="CategoryList">{cats}</ul>;
+  return (
+    <Card className="CategoryCard">
+      <Card.Title>
+        <h4>Animal:</h4>
+      </Card.Title>
+      <Card.Body>
+        <ul className="CategoryList">{cats}</ul>
+      </Card.Body>
+    </Card>
+  );
 }

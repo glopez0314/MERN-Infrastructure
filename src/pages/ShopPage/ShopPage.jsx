@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import * as productsAPI from "../../utilities/products-api";
 import * as ordersAPI from "../../utilities/orders-api";
 
+import "./ShopPage.css";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import SubCategoriesList from "../../components/SubCategoriesList/SubCategoriesList";
 import ProductList from "../../components/ProductList/ProductList";
@@ -29,9 +30,13 @@ export default function ShopPage({ user }) {
     }
     getProducts();
 
-    async function getCart() {
-      const cart = await ordersAPI.getCart();
-      setCart(cart);
+    async function getCart(user) {
+      if (user === user.name) {
+        const cart = await ordersAPI.getCart();
+        setCart(cart);
+      } else {
+        return;
+      }
     }
     getCart();
   }, []);
@@ -42,24 +47,33 @@ export default function ShopPage({ user }) {
   }
   return (
     <>
-      <CategoriesList
-        categories={categoryRef.current}
-        activeCat={activeCategory}
-        setActiveCat={setActiveCategory}
-      />
-      <SubCategoriesList
-        subCategories={subCategoryRef.current}
-        activeSubCat={activeSubCategory}
-        setActiveSubCat={setActiveSubCategory}
-      />
-      <ProductList
-        products={productItems.filter(
-          (item) =>
-            item.category.name === activeCategory &&
-            item.subCategory.name === activeSubCategory
-        )}
-        handleAddToCart={handleAddToCart}
-      />
+      <div className="shopPage">
+        <div className="div1">
+          <CategoriesList
+            categories={categoryRef.current}
+            activeCat={activeCategory}
+            setActiveCat={setActiveCategory}
+          />
+        </div>
+        <div className="div2">
+          <SubCategoriesList
+            subCategories={subCategoryRef.current}
+            activeSubCat={activeSubCategory}
+            setActiveSubCat={setActiveSubCategory}
+          />
+        </div>
+        <div className="div3">
+          <ProductList
+            products={productItems.filter(
+              (item) =>
+                item.category.name === activeCategory &&
+                item.subCategory.name === activeSubCategory
+            )}
+            handleAddToCart={handleAddToCart}
+            cart={cart}
+          />
+        </div>
+      </div>
     </>
   );
 }
