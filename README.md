@@ -1,19 +1,16 @@
-# MERN-Stack Infrastructure
+# Project-4
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+This project is developed using the MERN stack, the app is to show case the skills of developing a single page application. This app resembles that of a pet store page that you'll be able to place orders in.
 
-## .env set-up
+Technology used: MongoDb, Express, React, Node.js, Bootstrap, HTML, CSS, JavaScript
 
-create a .env file with these fields
-```
-DATABASE_URL=<mongoDB atlas>
-SECRET=<string with no spaces>
-```
+Try the app here-->   https://pets-r-us-b833b40854da.herokuapp.com/
 
-## starting up the project
-install all needed packages with "npm install"
-open up two terminal tabs
-    run express on backend tab with "nodemon server"
-    run the react front end server with "npm start"
-    
+Trello: https://trello.com/b/EMm9oRNV/pets-r-us
+
+Whats to Come:
+    A search bar
+    Product Details component
+
+
 

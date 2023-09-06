@@ -17,10 +17,8 @@ export default function SubCategoryList({
   ));
   return (
     <Card>
-      <Card.Title>
-        <h4>Product:</h4>
-      </Card.Title>
       <Card.Body>
+        <Card.Title>Product:</Card.Title>
         <ul className="SubCategoryList">{subCats}</ul>
       </Card.Body>
     </Card>
