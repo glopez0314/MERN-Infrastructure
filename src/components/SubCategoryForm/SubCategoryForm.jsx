@@ -20,7 +20,7 @@ export default class SubCategoryForm extends Component {
     try {
       const { name } = this.state;
       const formData = { name };
-      const subCategory = await addSubCategory(formData);
+      await addSubCategory(formData);
     } catch (err) {
       this.setState({ error: "Invalid Form - Try Again", err });
     }

@@ -21,7 +21,7 @@ export default class CategoryForm extends Component {
     try {
       const { name, emoji } = this.state;
       const categoryData = { name, emoji };
-      const category = await addCategory(categoryData);
+      await addCategory(categoryData);
     } catch (err) {
       this.setState({ error: "Invalid Form - Try Again" });
     }

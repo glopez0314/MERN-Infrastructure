@@ -1,10 +1,7 @@
 import { Component } from "react";
-import { useNavigate } from "react-router-dom";
 import { signUp } from "../../utilities/users-service";
 
 import { Button, Form } from "react-bootstrap";
-
-const navigate = useNavigate();
 
 export default class SignUpForm extends Component {
   state = {
@@ -32,7 +29,7 @@ export default class SignUpForm extends Component {
       // in the payload of the JSON Web Token (JWT)
       const user = await signUp(formData);
       this.props.setUser(user);
-      navigate("/");
+      this.props.history.push("/");
     } catch {
       // An error occurred
       // Probably due to a duplicate email
@@ -41,7 +38,6 @@ export default class SignUpForm extends Component {
   };
 
   render() {
-    const disable = this.state.password !== this.state.confirm;
     return (
       <Form autoComplete="off" onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">

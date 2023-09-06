@@ -15,6 +15,7 @@ export default function LoginForm({ setUser }) {
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
     setError("");
+    console.log(error);
   }
 
   async function handleSubmit(evt) {
