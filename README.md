@@ -2,13 +2,13 @@
 
 This project is developed using the MERN stack, the app is to show case the skills of developing a single page application. This app resembles that of a pet store page that you'll be able to place orders in.
 
-![](<https://github.com/glopez0314/MERN-Infrastructure/blob/main/public/assets/Screenshot%25202023-09-05%2520at%25205.25.32%2520PM.png>)
+![sign in/up](<public/assets/Screenshot 2023-09-05 at 5.25.32 PM.png>)
 
-![](<https://github.com/glopez0314/MERN-Infrastructure/blob/main/public/assets/Screenshot%25202023-09-05%2520at%25202.00.55%2520PM.png>)
+![home](<public/assets/Screenshot 2023-09-05 at 2.00.55 PM.png>)
 
-![](<https://github.com/glopez0314/MERN-Infrastructure/blob/main/public/assets/Screenshot%25202023-09-05%2520at%25202.02.03%2520PM.png>)
+![cart](<public/assets/Screenshot 2023-09-05 at 2.02.03 PM.png>)
 
-![](<https://github.com/glopez0314/MERN-Infrastructure/blob/main/public/assets/Screenshot%25202023-09-05%2520at%25203.56.51%2520PM.png>)
+![shopping](<public/assets/Screenshot 2023-09-05 at 3.56.51 PM.png>)
 
 Technology used: MongoDb, Express, React, Node.js, Bootstrap, HTML, CSS, JavaScript
 
