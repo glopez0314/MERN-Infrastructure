@@ -4,18 +4,17 @@
     align-items: center;
     padding: 3vmin;
     font-size: 2vmin;
-    color: var(--text-light);
+    background-color: var(--bs-primary);
   }
   
   .OrderDetail .section-heading {
-    width: 100%
+    width: 100%;
   }
   
   .OrderDetail .line-item-container {
     margin-top: 3vmin;
     justify-content: flex-start;
     height: calc(100vh - 18vmin);
-    width: 100%;
   }
   
   .OrderDetail .total {
@@ -32,7 +31,6 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5vw;
-    color: var(--text-dark);
   }
   
   .OrderDetail .total span.right {

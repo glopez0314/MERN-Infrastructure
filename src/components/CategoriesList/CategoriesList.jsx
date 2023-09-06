@@ -13,10 +13,8 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
   ));
   return (
     <Card className="CategoryCard">
-      <Card.Title>
-        <h4>Animal:</h4>
-      </Card.Title>
       <Card.Body>
+        <Card.Title>Animal:</Card.Title>
         <ul className="CategoryList">{cats}</ul>
       </Card.Body>
     </Card>

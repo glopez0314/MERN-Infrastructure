@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 
-import { Nav, Navbar, Dropdown, DropdownButton } from "react-bootstrap";
+import { Nav, Navbar, Dropdown } from "react-bootstrap";
 
 function NavBar({ user, setUser }) {
+  const navigate = useNavigate();
+
   function handleLogOut() {
     userService.logOut();
     setUser(null);
+    navigate("/");
   }
 
   return (
@@ -28,14 +31,9 @@ function NavBar({ user, setUser }) {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/orders">Orders</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogOut}>LogOut</Dropdown.Item>
-
-                    <DropdownButton
-                      id="dropdown-admin"
-                      drop="end"
-                      title="Admin"
-                    >
+                    {user.name === "admin" ? (
                       <Dropdown.Item href="/add">Add Inventory</Dropdown.Item>
-                    </DropdownButton>
+                    ) : null}
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
