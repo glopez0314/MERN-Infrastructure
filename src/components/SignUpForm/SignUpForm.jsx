@@ -1,7 +1,10 @@
 import { Component } from "react";
+import { useNavigate } from "react-router-dom";
 import { signUp } from "../../utilities/users-service";
 
 import { Button, Form } from "react-bootstrap";
+
+const navigate = useNavigate();
 
 export default class SignUpForm extends Component {
   state = {
@@ -29,6 +32,7 @@ export default class SignUpForm extends Component {
       // in the payload of the JSON Web Token (JWT)
       const user = await signUp(formData);
       this.props.setUser(user);
+      navigate("/");
     } catch {
       // An error occurred
       // Probably due to a duplicate email
@@ -39,56 +43,56 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-        <Form autoComplete="off" onSubmit={this.handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="Enter email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              required
-            />
-          </Form.Group>
+      <Form autoComplete="off" onSubmit={this.handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+          />
+        </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Confirm</Form.Label>
-            <Form.Control
-              type="password"
-              name="confirm"
-              placeholder="Confirm password"
-              value={this.state.confirm}
-              onChange={this.handleChange}
-              required
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Confirm</Form.Label>
+          <Form.Control
+            type="password"
+            name="confirm"
+            placeholder="Confirm password"
+            value={this.state.confirm}
+            onChange={this.handleChange}
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     );
   }
 }
