@@ -9,5 +9,13 @@ export default function ProductList({ products, handleAddToCart }) {
       handleAddToCart={handleAddToCart}
     />
   ));
-  return <main className="ProductList">{productItems}</main>;
+  return (
+    <>
+      {productItems.length ? (
+        <main className="ProductList">{productItems}</main>
+      ) : (
+        <h1>No Products 😢</h1>
+      )}
+    </>
+  );
 }
