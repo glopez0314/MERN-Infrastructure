@@ -31,12 +31,8 @@ export default function ShopPage({ user }) {
     getProducts();
 
     async function getCart(user) {
-      if (user === user.name) {
-        const cart = await ordersAPI.getCart();
-        setCart(cart);
-      } else {
-        return;
-      }
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
     }
     getCart();
   }, []);
